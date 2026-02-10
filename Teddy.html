@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Teddy Day Pratibha 🧸</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffe4ef, #fff3da);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      color: #e75480;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .teddy {
+      font-size: 5.5rem;
+      display: inline-block;
+      animation: dance 0.8s infinite ease-in-out;
+      transition: transform 0.4s ease;
+    }
+
+    .hug {
+      animation: hugPulse 0.8s ease-in-out 2;
+    }
+
+    @keyframes dance {
+      0% { transform: rotate(-8deg) translateY(0); }
+      50% { transform: rotate(8deg) translateY(-12px); }
+      100% { transform: rotate(-8deg) translateY(0); }
+    }
+
+    @keyframes hugPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+      100% { transform: scale(1.1); }
+    }
+
+    @keyframes heartFloat {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%, -140px) scale(1.6); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 1rem;
+      color: #666;
+      max-width: 320px;
+      line-height: 1.5;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .buttons {
+      margin-top: 18px;
+    }
+
+    button {
+      padding: 10px 16px;
+      margin: 6px;
+      border: none;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #e75480;
+      color: white;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #d9436b;
+    }
+
+    /* Floating chocolates */
+    .chocolate {
+      position: absolute;
+      font-size: 1.6rem;
+      opacity: 0.75;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.85; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating chocolates -->
+  <div class="chocolate" style="left:12%; animation-delay:0s;">🍫</div>
+  <div class="chocolate" style="left:28%; animation-delay:3s;">🍬</div>
+  <div class="chocolate" style="left:45%; animation-delay:6s;">🍫</div>
+  <div class="chocolate" style="left:62%; animation-delay:2s;">🍬</div>
+  <div class="chocolate" style="left:78%; animation-delay:5s;">🍫</div>
+  <div class="chocolate" style="left:90%; animation-delay:8s;">🍬</div>
+
+  <div class="container">
+    <h1>Happy Teddy Day Pratibha 🧸</h1>
+    <div id="teddy" class="teddy">🧸</div>
+
+    <div class="note">I know this looks kiddish but this is the best I can do right now 😅</div>
+
+    <div class="buttons">
+      <p>Wanna hug the teddy? 🤍</p>
+      <button onclick="giveHug(true)">Yes</button>
+      <button onclick="giveHug(false)">No</button>
+    </div>
+  </div>
+
+  <script>
+    function giveHug(answer) {
+      const teddy = document.getElementById('teddy');
+
+      if (answer) {
+        teddy.classList.remove('hug');
+        void teddy.offsetWidth;
+        teddy.classList.add('hug');
+
+        for (let i = 0; i < 6; i++) {
+          const heart = document.createElement('div');
+          heart.textContent = '🤍';
+          heart.style.position = 'absolute';
+          heart.style.left = '50%';
+          heart.style.top = '55%';
+          heart.style.transform = 'translate(-50%, -50%)';
+          heart.style.fontSize = '1.5rem';
+          heart.style.animation = 'heartFloat 1.8s ease-out forwards';
+          heart.style.pointerEvents = 'none';
+
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1800);
+        }
+      } else {
+        alert('Okay... hug saved for later 🥺');
+      }
+    }
+  </script>
+</body>
+</html>
